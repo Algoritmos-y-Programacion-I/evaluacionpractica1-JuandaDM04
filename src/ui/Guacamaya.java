@@ -98,33 +98,70 @@ public class Guacamaya {
         unidades = new int[referencias];
 
     }
-
+    /**
+     * Descripcion: Este metodo se encarga de pedir al usuario el precio y la cantidad vendida para cada referencia de producto y almacenarlos en los arreglos precios y unidades.
+     */
     public static void solicitarDatos(){
-
+        for (int i = 0; i < precios.length; i++) {
+            System.out.println("\nDigite el precio de la referencia " + (i + 1) + ": ");
+            precios[i] = reader.nextDouble();
+            System.out.println("Digite la cantidad vendida de la referencia " + (i + 1) + ": ");
+            unidades[i] = reader.nextInt();
+        }
      
     }
-
+    /**
+     * Descripcion: sumar todas las cantidades vendidas.
+     */
     public static int calcularTotalUnidadesVendidas(){
-
-        return 0;
+        int totalUnidades = 0;
+    for (int unidad : unidades) {
+        totalUnidades += unidad;
+    }
+    return totalUnidades;
 
     }
-
+    /**
+     * Descripcion: este metodo se encarga de calcular el precio promedio de las referencias de productos vendidas.
+     * @return double 
+     */
     public static double calcularPrecioPromedio(){
-
-        return 0;
+        double sumaPrecios = 0;
+    for (double precio : precios) {
+        sumaPrecios += precio;
+    }
+    return sumaPrecios / precios.length;
 
     }
-
+   /**
+ * Descripcion: Este metodo calcula el total de dinero recaudado en el día, sumando el producto del precio por la cantidad vendida para cada referencia.
+ * pre: Los arreglos precios y unidades deben estar inicializados.
+ * pos: Retorna la suma total de dinero recaudado.
+ * @return El total de dinero recaudado.
+ */
     public static double calcularVentasTotales(){
-
-        return 0;
+        double totalVentas = 0;
+        for (int i = 0; i < precios.length; i++) {
+            totalVentas += precios[i] * unidades[i];
+        }
+        return totalVentas;
 
     }
-
+    /**
+ * Descripcion: Este metodo cuenta cuántas referencias de productos superaron el límite mínimo de ventas proporcionado por el usuario.
+ * pre: Los arreglos precios y unidades deben estar inicializados.
+ * pos: Retorna el número de productos que superaron el límite de ventas.
+ * @param limite El valor mínimo de ventas que un producto debe superar.
+ * @return El número de referencias que superaron el límite.
+ */
     public static int consultarReferenciasSobreLimite(double limite){
-
-        return 0;
+        int contador = 0;
+        for (int i = 0; i < precios.length; i++) {
+            if (precios[i] * unidades[i] > limite) {
+                contador++;
+            }
+        }
+        return contador;
 
     }
 
